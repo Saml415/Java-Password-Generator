@@ -52,34 +52,46 @@ public class Main {
         int numbersLength = numbers.length;
         int specialLength = specialChars.length;
 
-       Scanner myObj = new Scanner(System.in);
-       int passLength;
+       String myObj =  JOptionPane.showInputDialog("How many characters do you want?");
+        int passLength = Integer.parseInt(myObj);
 
-       System.out.println("How long do you want your password?");
-       passLength = myObj.nextInt();
+
+
+       System.out.println(passLength);
+
 
        if(passLength < 8){
-           System.out.println("Password must be at least 8 characters");
+           JOptionPane.showMessageDialog(null, "Password must be at least 8 characters");
            System.exit(0);
        }
 
        if(passLength > 128){
-           System.out.println("Password must be less than 128 characters");
+           JOptionPane.showMessageDialog(null, "Password must be less than 128 characters");
            System.exit(0);
        }
 
 
-        int input1 = JOptionPane.showInternalConfirmDialog(null,"Do you want upper case letters?");
+
+        int passUp = JOptionPane.showInternalConfirmDialog(null,"Do you want upper case letters?");
+        int passDown  =  JOptionPane.showInternalConfirmDialog(null, "Do you want lower case letter?");
+
        // 0 = Yes  1 = No
-       if (input1 == 0){
+       if (passUp == 0){
 
            String[] newPassword = new String[upperLength];
            System.arraycopy(upperCase, 0,newPassword, 0,upperLength);
+
+
+           if(passDown == 0){
+               newPassword = new String[lowerLength];
+               System.arraycopy(lowerCase, 0 ,newPassword, 0, lowerLength);
+
+           }
            System.out.println(Arrays.toString(newPassword));
-
-       }else{
-
        }
+
+        ;
+
 
     }
 
@@ -105,19 +117,9 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
 
                makePassword();
-//
 
 
-//                if (input1 == 0) {
-//
-//                    int input2 = JOptionPane.showConfirmDialog(null,
-//                            "Do you want lower case letters?", "Select an Option...", JOptionPane.YES_NO_CANCEL_OPTION);
-//                } else {
-//                    int input2 = JOptionPane.showConfirmDialog(null,
-//                            "Do you want lower case letters?", "Select an Option...", JOptionPane.YES_NO_CANCEL_OPTION);
-//                }
 
-                // 0=yes, 1=no, 2=cancel
 
             }
         });
